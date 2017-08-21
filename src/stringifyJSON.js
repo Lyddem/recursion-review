@@ -5,41 +5,41 @@
 
 var stringifyJSON = function(obj) {
   // your code goes here
-  if(typeof obj === 'number' || typeof obj === 'boolean'){
+  if(typeof obj === 'number' || typeof obj === 'boolean') {
     return '' + obj;
   }
 
-  if(!obj){
+  if(!obj) {
     return 'null';
   }
 
-  if(typeof obj === 'string'){
+  if(typeof obj === 'string') {
     return '"' + obj + '"';
   }
 
-  if(Array.isArray(obj)){
+  if(Array.isArray(obj)) {
     var results = [];
 
-    if(obj.length === 0){
+    if(obj.length === 0) {
       return '[]';
     }
     obj.forEach(elem => {
       results.push(stringifyJSON(elem));
-    })
-      return '[' + results.join(',') + ']';
+    });
+    return '[' + results.join(',') + ']';
   }
 
-  if(typeof obj === 'object'){
+  if(typeof obj === 'object') {
 
     var results = [];
 
     for(var key in obj){
-      if(typeof obj[key] === 'function' || obj[key] === undefined){ return '{}'}
+      if(typeof obj[key] === 'function' || obj[key] === undefined) {
+        return '{}';
+      }
 
       results.push(stringifyJSON(key) + ':' + stringifyJSON(obj[key]));
     }
-      return '{' +  results.join(',') + '}';
+    return '{' +  results.join(',') + '}';
   }
-
-
 };
