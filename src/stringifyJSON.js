@@ -5,4 +5,7 @@
 
 var stringifyJSON = function(obj) {
   // your code goes here
-};
+    if(obj === '{}'){
+      return;
+    }
+};  s
